@@ -1,0 +1,6 @@
+{
+  "name": "Kannada Alphabet Trainer",
+  "description": "An interactive application to learn Kannada alphabets, word forge (with 10,000 progressive vocabulary words), and essay practice (with 100 prebuilt offline essays & Gemini AI topic writer).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

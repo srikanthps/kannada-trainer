@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Kannada+2:wght@400;500;600;700;800&family=Georgia&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Georgia", Cambria, "Times New Roman", Times, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-kannada: "Baloo Kannada 2", "Georgia", serif;
+  
+  --color-editorial-ink: #2D2926;
+  --color-editorial-paper: #FDFBF7;
+  --color-editorial-burgundy: #7B241C;
+  --color-editorial-saffron: #F4A261;
+  --color-editorial-cream: #F5EFEB;
+  --color-editorial-accent: #C85A17;
+}
+
+@utility font-kannada {
+  font-family: var(--font-kannada);
+}
+
+/* Base Body Styles to enforce the warm paper background */
+body {
+  background-color: var(--color-editorial-paper);
+  color: var(--color-editorial-ink);
+}
+
+/* Thin horizontal scrollbars for the consonants carousel */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--color-editorial-cream);
+  border-radius: 10px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: #d4d4d0;
+}
+
