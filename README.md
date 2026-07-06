@@ -4,21 +4,23 @@ An interactive, high-fidelity, and culturally tailored full-stack web applicatio
 
 ---
 
-## 📸 Application Showcase
+## 📸 Design Mockups & Visual Highlights
 
-Below are actual screenshots showcasing the warm, academic, and modern neobrutalist interface of our Kannada learning environment:
+Below are visual design mockups and concept renderings representing the primary learning environments. 
+
+*(Note to Developer: Since these are generated mockups, you can easily replace them with your own actual screenshots by naming your image files exactly as shown below and dragging them into the `/src/assets/images/` directory in the file explorer!)*
 
 ### 1. Alphabet Explorer & Articulation Commentary
 The **Alphabet Explorer** provides a detailed visual catalog of Kannada vowels, consonants, modifiers, and digits, paired with vocal articulation descriptions, letter metrics, and real-world audio examples.
-![Alphabet Explorer](./src/assets/images/alphabet_explorer_screenshot_1783332311570.jpg)
+![Alphabet Explorer](./src/assets/images/alphabet.jpg)
 
 ### 2. KAGUNITHA SYLLABLE CHART (Classroom Wall Poster Mode)
 A dedicated, high-density print-ready syllable grid with horizontal scrollbars for seamless table navigation showing consonant-vowel combinations and vowel sign diacritics.
-![Kagunitha Syllable Chart](./src/assets/images/kagunitha_chart_screenshot_1783332290251.jpg)
+![Kagunitha Syllable Chart](./src/assets/images/kagunitha.png)
 
 ### 3. Linguistic Vocabulary Forge (Study Cards Mode)
 A vocabulary study deck with search controls, shuffle, filters, and flashcards supporting click-to-reveal translation and native pronunciation.
-![Linguistic Vocabulary Forge](./src/assets/images/vocabulary_forge_screenshot_1783332330185.jpg)
+![Linguistic Vocabulary Forge](./src/assets/images/vocabulary.png)
 
 
 ---
