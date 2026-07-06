@@ -6,9 +6,20 @@ An interactive, high-fidelity, and culturally tailored full-stack web applicatio
 
 ## 📸 Application Showcase
 
-Below is a visual mockup showcasing the modern, warm, and highly polished interface of our Kannada learning environment:
+Below are actual screenshots showcasing the warm, academic, and modern neobrutalist interface of our Kannada learning environment:
 
-![Kannada Aksharamale Application Screenshot](./src/assets/images/app_screenshot_1783331742849.jpg)
+### 1. Alphabet Explorer & Articulation Commentary
+The **Alphabet Explorer** provides a detailed visual catalog of Kannada vowels, consonants, modifiers, and digits, paired with vocal articulation descriptions, letter metrics, and real-world audio examples.
+![Alphabet Explorer](./src/assets/images/alphabet_explorer_screenshot_1783332311570.jpg)
+
+### 2. KAGUNITHA SYLLABLE CHART (Classroom Wall Poster Mode)
+A dedicated, high-density print-ready syllable grid with horizontal scrollbars for seamless table navigation showing consonant-vowel combinations and vowel sign diacritics.
+![Kagunitha Syllable Chart](./src/assets/images/kagunitha_chart_screenshot_1783332290251.jpg)
+
+### 3. Linguistic Vocabulary Forge (Study Cards Mode)
+A vocabulary study deck with search controls, shuffle, filters, and flashcards supporting click-to-reveal translation and native pronunciation.
+![Linguistic Vocabulary Forge](./src/assets/images/vocabulary_forge_screenshot_1783332330185.jpg)
+
 
 ---
 
