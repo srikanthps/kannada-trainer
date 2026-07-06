@@ -4,11 +4,7 @@ An interactive, high-fidelity, and culturally tailored full-stack web applicatio
 
 ---
 
-## 📸 Design Mockups & Visual Highlights
-
-Below are visual design mockups and concept renderings representing the primary learning environments. 
-
-*(Note to Developer: Since these are generated mockups, you can easily replace them with your own actual screenshots by naming your image files exactly as shown below and dragging them into the `/src/assets/images/` directory in the file explorer!)*
+## 📸 Design Highlights
 
 ### 1. Alphabet Explorer & Articulation Commentary
 The **Alphabet Explorer** provides a detailed visual catalog of Kannada vowels, consonants, modifiers, and digits, paired with vocal articulation descriptions, letter metrics, and real-world audio examples.
