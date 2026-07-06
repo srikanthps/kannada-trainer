@@ -1,4 +1,4 @@
-# Kannada Aksharamale & Kagunitha Learner
+# Kannada Trainer (ಕನ್ನಡ ತರಬೇತುದಾರ)
 
 An interactive, high-fidelity, and culturally tailored full-stack web application designed to help students and enthusiasts master the Kannada script, sounds, vocabulary, and composition.
 
