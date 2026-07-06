@@ -12,7 +12,7 @@ Below are visual design mockups and concept renderings representing the primary 
 
 ### 1. Alphabet Explorer & Articulation Commentary
 The **Alphabet Explorer** provides a detailed visual catalog of Kannada vowels, consonants, modifiers, and digits, paired with vocal articulation descriptions, letter metrics, and real-world audio examples.
-![Alphabet Explorer](./src/assets/images/alphabet.jpg)
+![Alphabet Explorer](./src/assets/images/alphabet.png)
 
 ### 2. KAGUNITHA SYLLABLE CHART (Classroom Wall Poster Mode)
 A dedicated, high-density print-ready syllable grid with horizontal scrollbars for seamless table navigation showing consonant-vowel combinations and vowel sign diacritics.
