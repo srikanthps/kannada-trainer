@@ -2,6 +2,8 @@
 
 An interactive, high-fidelity, and culturally tailored full-stack web application designed to help students and enthusiasts master the Kannada script, sounds, vocabulary, and composition.
 
+Live App: https://kannada-alphabet-trainer-527897772021.asia-southeast1.run.app/
+
 ---
 
 ## 📸 Design Highlights
