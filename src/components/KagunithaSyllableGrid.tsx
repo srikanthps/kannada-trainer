@@ -351,7 +351,7 @@ export const KagunithaSyllableGrid: React.FC<{ standalone?: boolean }> = ({ stan
               </div>
 
               {/* Table wrapper with no height restriction in standalone mode */}
-              <div className="overflow-visible">
+              <div className="overflow-x-auto scrollbar-thin">
                 <table className="w-full border-collapse text-center relative select-none">
                   <thead>
                     <tr className="sticky top-0 z-30 bg-[#FFF5E6] border-b border-[#2D2926] print:static">

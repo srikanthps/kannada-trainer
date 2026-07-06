@@ -1,670 +1,521 @@
 export interface WordItem {
   kannadaWord: string;
   transliteration: string;
+  transliterationHi: string;
   englishMeaning: string;
   hindiMeaning: string;
   breakdown: string;
-  complexityTier: string;
-  level: number;
+  breakdownHi: string;
+  complexityTier: 'Dictionary Word' | 'Real-Life Phrase';
 }
 
-export const TOTAL_FORGE_WORDS = 10000;
+export const REALISTIC_WORDS_AND_PHRASES: WordItem[] = [
+  // --- SECTION 1: DICTIONARY WORDS (25 Entries) ---
+  {
+    kannadaWord: "ಮರ",
+    transliteration: "mara",
+    transliterationHi: "मरा",
+    englishMeaning: "tree",
+    hindiMeaning: "पेड़ / वृक्ष",
+    breakdown: "A fundamental everyday noun meaning 'tree'. Pronounced with a soft dental 'r'.",
+    breakdownHi: "एक बुनियादी संज्ञा जिसका अर्थ 'पेड़' है। इसमें मृदु 'ರ' ध्वनि का उच्चारण होता है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಮನೆ",
+    transliteration: "mane",
+    transliterationHi: "मने",
+    englishMeaning: "house / home",
+    hindiMeaning: "घर / मकान",
+    breakdown: "A core vocabulary word meaning 'home' or 'house'. Simple two-syllable word.",
+    breakdownHi: "एक बुनियादी शब्द जिसका अर्थ 'घर' या 'गृह' है। सरल दो-अक्षर वाला शब्द।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ನೀರು",
+    transliteration: "neeru",
+    transliterationHi: "नीरू",
+    englishMeaning: "water",
+    hindiMeaning: "पानी / जल",
+    breakdown: "A daily essential noun for 'water'. Ends with the standard nominative 'u' vowel mark.",
+    breakdownHi: "दैनिक जीवन का आवश्यक शब्द 'पानी'। इसका अंत उकारान्त 'ಉ' से होता है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಹಣ್ಣು",
+    transliteration: "hannu",
+    transliterationHi: "हण्णु",
+    englishMeaning: "fruit",
+    hindiMeaning: "फल",
+    breakdown: "Features the retroflex 'n' (ಣ್) consonant conjunct (ottakshara) representing 'fruit'.",
+    breakdownHi: "इसमें मूर्धन्य 'ಣ' वर्ग का ओत्तक्षर (संयुक्त व्यंजन 'ಣ್ಣು') है, जिसका अर्थ 'फल' है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಶಾಲೆ",
+    transliteration: "shaale",
+    transliterationHi: "शाले",
+    englishMeaning: "school",
+    hindiMeaning: "स्कूल / पाठशाला",
+    breakdown: "Commonly used in everyday speech for 'school'. Derived from the classical Sanskrit word.",
+    breakdownHi: "आम बोलचाल में 'विद्यालय' के लिए प्रयुक्त। यह मूलतः संस्कृत से आया है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಪುಸ್ತಕ",
+    transliteration: "pustaka",
+    transliterationHi: "पुस्तक",
+    englishMeaning: "book",
+    hindiMeaning: "किताब / पुस्तक",
+    breakdown: "A standard noun meaning 'book', featuring a conjunct cluster (ಸ್ತ - sta).",
+    breakdownHi: "एक मानक संज्ञा जिसका अर्थ 'पुस्तक' या 'किताब' है, जिसमें 'ಸ್ತ' संयुक्त अक्षर है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಹಾಲು",
+    transliteration: "haalu",
+    transliterationHi: "हालू",
+    englishMeaning: "milk",
+    hindiMeaning: "दूध",
+    breakdown: "A common household noun representing 'milk'. Essential vocabulary for shopping and food.",
+    breakdownHi: "दूध के लिए प्रयुक्त रोजमर्रा का शब्द। भोजन और खरीदारी के लिए आवश्यक शब्दावली।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಬಾಗಿಲು",
+    transliteration: "baagilu",
+    transliterationHi: "बागिलू",
+    englishMeaning: "door",
+    hindiMeaning: "दरवाजा / द्वार",
+    breakdown: "A common household word representing 'door' or 'entrance'.",
+    breakdownHi: "घर का सामान्य शब्द जिसका अर्थ 'द्वार' या 'दरवाजा' है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಕಿಟಕಿ",
+    transliteration: "kitaki",
+    transliterationHi: "किटकी",
+    englishMeaning: "window",
+    hindiMeaning: "खिड़की",
+    breakdown: "A daily household noun for 'window' that has simple visual strokes and is easy to learn.",
+    breakdownHi: "खिड़की के लिए उपयोग होने वाला सरल घरेलू शब्द।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಹೂವು",
+    transliteration: "hoovu",
+    transliterationHi: "हूवू",
+    englishMeaning: "flower",
+    hindiMeaning: "फूल / पुष्प",
+    breakdown: "A beautiful everyday word for 'flower'. Can be combined as 'ಹೂವಿನ ಹಾರ' (flower garland).",
+    breakdownHi: "फूल के लिए एक सुंदर शब्द। इसे 'ಹೂವಿನ ಹಾರ' (फूलों का हार) के रूप में भी जोड़ा जा सकता है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಗಿಡ",
+    transliteration: "gida",
+    transliterationHi: "गिडा",
+    englishMeaning: "plant / sapling",
+    hindiMeaning: "पौधा / छोटा पेड़",
+    breakdown: "A very common word representing a small plant, shrub, or sapling.",
+    breakdownHi: "छोटे पौधे या झाड़ी के लिए इस्तेमाल होने वाला एक अत्यंत सामान्य शब्द।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಸೂರ್ಯ",
+    transliteration: "soorya",
+    transliterationHi: "सूर्य",
+    englishMeaning: "sun",
+    hindiMeaning: "सूरज / सूर्य",
+    breakdown: "Sanskrit loan word for 'sun' with a superscript 'repha' (ರ್) consonant conjunct over 'ya'.",
+    breakdownHi: "सूर्य के लिए प्रयुक्त तत्सम शब्द। इसमें 'ಯ' के ऊपर रेफ 'ರ್' (ओत्तक्षर) लगा हुआ है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಚಂದ್ರ",
+    transliteration: "chandra",
+    transliterationHi: "चंद्र",
+    englishMeaning: "moon",
+    hindiMeaning: "चाँद / चंद्रमा",
+    breakdown: "Classic word for 'moon', featuring the complex consonant conjunct 'ndra' (ಂದ್ರ) at the end.",
+    breakdownHi: "चंद्रमा के लिए प्रयुक्त शब्द, जिसमें अंत में जटिल संयुक्त अक्षर 'ಂದ್ರ' (न्द्र) आता है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ನಕ್ಷತ್ರ",
+    transliteration: "nakshatra",
+    transliterationHi: "नक्षत्र",
+    englishMeaning: "star",
+    hindiMeaning: "तारा / नक्षत्र",
+    breakdown: "Standard word for 'star', featuring the compound conjuncts 'ksha' (ಕ್ಷ) and 'tra' (ತ್ರ).",
+    breakdownHi: "तारे के लिए प्रयुक्त शब्द, जिसमें संयुक्त अक्षर 'ಕ್ಷ' (क्ष) और 'ತ್ರ' (त्र) शामिल हैं।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಆಕಾಶ",
+    transliteration: "aakaasha",
+    transliterationHi: "आकाश",
+    englishMeaning: "sky",
+    hindiMeaning: "आसमान / आकाश",
+    breakdown: "A majestic everyday word for 'sky' or 'space'. Uses the palatal sibilant 'sha' (ಶ).",
+    breakdownHi: "आकाश या आसमान के लिए प्रयुक्त शब्द। इसमें तालव्य 'ಶ' (श) का उपयोग होता है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಸ್ನೇಹಿತ",
+    transliteration: "snehita",
+    transliterationHi: "स्नेहित",
+    englishMeaning: "friend (male)",
+    hindiMeaning: "दोस्त / मित्र",
+    breakdown: "A warm, everyday noun for a male friend. Feminine equivalent is 'ಸ್ನೇಹಿತೆ' (snehite).",
+    breakdownHi: "पुरुष मित्र के लिए उपयोग होने वाला शब्द। स्त्रीलिंग रूप 'ಸ್ನೇಹಿತೆ' (स्नेहिते) है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಭಾಷೆ",
+    transliteration: "bhaashe",
+    transliterationHi: "भाषे",
+    englishMeaning: "language",
+    hindiMeaning: "भाषा",
+    breakdown: "Noun meaning 'language', written with the aspirated 'bha' (ಭ) and retroflex 'sha' (ಷ).",
+    breakdownHi: "'भाषा' अर्थ वाली संज्ञा, जिसे महाप्राण 'ಭ' और मूर्धन्य 'ಷ' के साथ लिखा जाता है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ದೇಶ",
+    transliteration: "desha",
+    transliterationHi: "देश",
+    englishMeaning: "country",
+    hindiMeaning: "देश / राष्ट्र",
+    breakdown: "Common noun representing a nation or country. Simple and universally understood.",
+    breakdownHi: "देश या राष्ट्र के लिए प्रयुक्त शब्द। सरल और सार्वभौमिक रूप से समझा जाने वाला।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಹಳ್ಳಿ",
+    transliteration: "halli",
+    transliterationHi: "हळ्ळी",
+    englishMeaning: "village",
+    hindiMeaning: "गाँव",
+    breakdown: "Uses the double-la (ಳ್ಳ) retroflex conjunct with the 'i' vowel modifier to represent 'village'.",
+    breakdownHi: "गाँव के लिए प्रयुक्त शब्द, जिसमें मूर्धन्य 'ಳ' का द्वित्व ओत्तक्षर (ಳ್ಳ) और इ-कार मात्रा प्रयुक्त है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ರಸ್ತೆ",
+    transliteration: "raste",
+    transliterationHi: "रस्ते",
+    englishMeaning: "road / street",
+    hindiMeaning: "सड़क / मार्ग",
+    breakdown: "Standard word for road/street, utilizing the 'te' (ತ್ + ಎ) subscript under 'sa'.",
+    breakdownHi: "सड़क या मार्ग के लिए मानक शब्द, जिसमें 'ಸ' के नीचे 'ತ' की मात्रा और ए-कार (ಸ್ತೇ) जोड़ा गया है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಹಕ್ಕಿ",
+    transliteration: "hakki",
+    transliterationHi: "हक्की",
+    englishMeaning: "bird",
+    hindiMeaning: "पक्षी / चिड़िया",
+    breakdown: "A simple and beautiful noun for 'bird', containing a double-ka (ಕ್ಕ) conjunct.",
+    breakdownHi: "चिड़िया के लिए प्रयुक्त सरल शब्द, जिसमें 'ಕ' का द्वित्व ओत्तक्षर 'ಕ್ಕಿ' लगा हुआ है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ನಾಯಿ",
+    transliteration: "naayi",
+    transliterationHi: "नायी",
+    englishMeaning: "dog",
+    hindiMeaning: "कुत्ता",
+    breakdown: "A standard domestic animal word meaning 'dog'. Highly intuitive pronunciation.",
+    breakdownHi: "एक घरेलू पालतू पशु 'कुत्ता'। इसका उच्चारण बहुत ही सरल और स्वाभाविक है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಬೆಕ್ಕು",
+    transliteration: "bekku",
+    transliterationHi: "बेक्कु",
+    englishMeaning: "cat",
+    hindiMeaning: "बिल्ली",
+    breakdown: "Standard domestic animal word meaning 'cat'. Uses a double-ka (ಕ್ಕ) conjunct.",
+    breakdownHi: "बिल्ली के लिए प्रयुक्त शब्द। इसमें 'ಕ' का द्वित्व ओत्तक्षर 'ಕ್ಕು' लगा है।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಸಮಯ",
+    transliteration: "samaya",
+    transliterationHi: "समय",
+    englishMeaning: "time",
+    hindiMeaning: "समय / काल",
+    breakdown: "An everyday abstract noun meaning 'time'. Shared directly with Sanskrit/Hindi roots.",
+    breakdownHi: "'समय' के लिए प्रयुक्त शब्द। संस्कृत और हिंदी के समान रूप से सहज ग्राह्य।",
+    complexityTier: "Dictionary Word"
+  },
+  {
+    kannadaWord: "ಹಬ್ಬ",
+    transliteration: "habba",
+    transliterationHi: "हब्बा",
+    englishMeaning: "festival",
+    hindiMeaning: "त्योहार / उत्सव",
+    breakdown: "An extremely popular word for 'festival', featuring a double-ba (ಬ್ಬ) consonant conjunct.",
+    breakdownHi: "त्योहार या पर्व के लिए एक अत्यंत लोकप्रिय शब्द, जिसमें 'ಬ' का द्वित्व ओत्तक्षर 'ಬ್ಬ' प्रयुक्त हुआ है।",
+    complexityTier: "Dictionary Word"
+  },
 
-export function transliterateToHindi(kannadaText: string): string {
-  if (!kannadaText) return '';
-  const map: Record<string, string> = {
-    // Swaras (Vowels)
-    'ಅ': 'अ', 'ಆ': 'आ', 'ಇ': 'इ', 'ಈ': 'ई', 'ಉ': 'उ', 'ಊ': 'ऊ', 'ಋ': 'ऋ',
-    'ಎ': 'ए', 'ಏ': 'ए', 'ಐ': 'ऐ', 'ಒ': 'ओ', 'ಓ': 'ओ', 'ಔ': 'औ',
-    // Vyanjanas (Consonants)
-    'ಕ': 'क', 'ಖ': 'ख', 'ಗ': 'ग', 'ಘ': 'घ', 'ಙ': 'ङ',
-    'ಚ': 'च', 'ಛ': 'छ', 'ಜ': 'ज', 'ಝ': 'झ', 'ಞ': 'ञ',
-    'ಟ': 'ट', 'ಠ': 'ठ', 'ಡ': 'ड', 'ಢ': 'ढ', 'ಣ': 'ण',
-    'ತ': 'त', 'ಥ': 'थ', 'ದ': 'द', 'ಧ': 'ध', 'ನ': 'न',
-    'ಪ': 'प', 'ಫ': 'फ', 'ಬ': 'ब', 'ಭ': 'भ', 'ಮ': 'म',
-    'ಯ': 'य', 'ರ': 'र', 'ಲ': 'ल', 'ವ': 'व', 'ಶ': 'श', 'ಷ': 'ष', 'ಸ': 'स', 'ಹ': 'ह',
-    'ಳ': 'ल', 'ಱ': 'र', 'ೞ': 'ल',
-    // Gunitas (Vowel signs / matras)
-    'ಾ': 'ा', 'ಿ': 'ि', 'ೀ': 'ी', 'ು': 'ु', 'ೂ': 'ू', 'ೃ': 'ृ',
-    'ೆ': 'े', 'ೇ': 'े', 'ೈ': 'ै', 'ೊ': 'ो', 'ೋ': 'ो', 'ೌ': 'ौ',
-    // Halant / Virama
-    '್': '्',
-    // Anusvara & Visarga
-    'ಂ': 'ं', 'ಃ': 'ः',
-    // Avagraha
-    'ಽ': 'ऽ',
-    // Numbers
-    '೦': '०', '೧': '१', '೨': '२', '೩': '३', '೪': '४', '೫': '५', '೬': '६', '೭': '७', '೮': '८', '೯': '९'
-  };
-
-  let result = '';
-  for (let i = 0; i < kannadaText.length; i++) {
-    const char = kannadaText[i];
-    result += map[char] || char;
+  // --- SECTION 2: REAL-LIFE PHRASES & CONVERSATIONS (25 Entries) ---
+  {
+    kannadaWord: "ನಮಸ್ಕಾರ, ಹೇಗಿದ್ದೀರಾ?",
+    transliteration: "Namaskaara, hegiddeera?",
+    transliterationHi: "नमस्कार, हेगिद्दीरा?",
+    englishMeaning: "Hello, how are you?",
+    hindiMeaning: "नमस्ते, आप कैसे हैं?",
+    breakdown: "The polite cultural greeting in Kannada. 'Hegiddeera' is the respectful formal plural form of 'how are you'.",
+    breakdownHi: "कन्नड़ में सम्मानजनक अभिवादन। 'हेगिद्दीरा' बहुवचन या आदरसूचक रूप में प्रयुक्त होता है।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ನನ್ನ ಹೆಸರು...",
+    transliteration: "Nanna hesaru...",
+    transliterationHi: "नನ್ನ हेसरू...",
+    englishMeaning: "My name is...",
+    hindiMeaning: "मेरा नाम... है।",
+    breakdown: "The standard pattern to introduce oneself. Formed of possessive 'Nanna' (my) + noun 'hesaru' (name).",
+    breakdownHi: "स्वयं का परिचय देने के लिए सामान्य वाक्य। 'नन्ना' (मेरा) + 'हेसरू' (नाम) से मिलकर बना है।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಧನ್ಯವಾದಗಳು",
+    transliteration: "Dhanyavaadagalu",
+    transliterationHi: "धन्यवादगळू",
+    englishMeaning: "Thank you",
+    hindiMeaning: "धन्यवाद",
+    breakdown: "Expression of formal gratitude. Plural marker '-galu' (ಗಳು) is appended to 'Dhanyavaada' for polite respect.",
+    breakdownHi: "कन्नड़ में कृतज्ञता व्यक्त करने का औपचारिक शिष्ट तरीका। आदर के लिए अंत में बहुवचन प्रत्यय '-गळू' जोड़ा गया है।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಕನ್ನಡ ಸುಲಭ ಮತ್ತು ಸುಂದರ ಭಾಷೆ",
+    transliteration: "Kannada sulabha mattu sundara bhaashe",
+    transliterationHi: "कन्नड़ सुलभ मत्तू सुंदर भाषे",
+    englishMeaning: "Kannada is an easy and beautiful language",
+    hindiMeaning: "कन्नड़ एक आसान और सुंदर भाषा है।",
+    breakdown: "A complete sentence: 'Sulabha' (easy) + 'mattu' (and) + 'sundara' (beautiful) + 'bhaashe' (language).",
+    breakdownHi: "एक पूरा वाक्य: 'सुलभ' (आसान) + 'मत्तू' (और) + 'सुंदर' + 'भाषे' (भाषा)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಊಟ ಆಯ್ತಾ?",
+    transliteration: "Oota aaytha?",
+    transliterationHi: "ऊटा आयता?",
+    englishMeaning: "Have you had your meal?",
+    hindiMeaning: "खाना हो गया?",
+    breakdown: "An incredibly warm and common expression in Karnataka, serving as a friendly check-in. Literally: 'Is meal done?'",
+    breakdownHi: "कर्नाटक में प्रेम और चिंता व्यक्त करने वाला एक बहुत ही आम अनौपचारिक वाक्य। शाब्दिक अर्थ: 'भोजन हो गया?'",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಶುಭ ಮುಂಜಾನೆ",
+    transliteration: "Shubha munjaane",
+    transliterationHi: "शुभ मुंजा़ने",
+    englishMeaning: "Good morning",
+    hindiMeaning: "सुप्रभात",
+    breakdown: "Standard greeting meaning 'Good Morning'. Formed of Sanskrit 'Shubha' (auspicious) + Kannada 'munjaane' (early morning).",
+    breakdownHi: "प्रातःकालीन अभिवादन। संस्कृत विशेषण 'शुभ' और कन्नड़ संज्ञा 'मुंजा़ने' (सुबह-सुबह) का योग।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಹೋಗಿ ಬರುವೆ",
+    transliteration: "Hoogi baruve",
+    transliterationHi: "होगी बरुवे",
+    englishMeaning: "Goodbye (I'll go and come)",
+    hindiMeaning: "अलविदा (फिर मिलेंगे)",
+    breakdown: "Polite cultural way to say goodbye. It literally translates to 'I will go and return', as saying just 'I am going' is considered impolite.",
+    breakdownHi: "विदा लेने का पारंपरिक शिष्ट तरीका। इसका शाब्दिक अर्थ है 'मैं जाकर आता हूँ', क्योंकि केवल 'जा रहा हूँ' कहना अशुभ माना जाता है।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಇದರ ಬೆಲೆ ಎಷ್ಟು?",
+    transliteration: "Idara bele eshtu?",
+    transliterationHi: "इदर बेले एश्टू?",
+    englishMeaning: "How much does this cost?",
+    hindiMeaning: "इसका मूल्य कितना है?",
+    breakdown: "An essential conversational shopping phrase. 'Idara' (its / of this) + 'bele' (price) + 'eshtu' (how much).",
+    breakdownHi: "खरीदारी के लिए एक आवश्यक वाक्य। 'इदर' (इसका) + 'बेले' (दाम) + 'एश्टू' (कितना)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ನಿಮ್ಮ ಸಹಾಯಕ್ಕೆ ಧನ್ಯವಾದಗಳು",
+    transliteration: "Nimma sahaayakke dhanyavaadagalu",
+    transliterationHi: "निम्म्म सहायक्के धन्यवादगळू",
+    englishMeaning: "Thank you for your help",
+    hindiMeaning: "आपकी मदद के लिए धन्यवाद।",
+    breakdown: "Polite acknowledgment. 'Nimma' (your-respectful) + 'sahaayakke' (for help, dative case suffix '-ke') + 'dhanyavaadagalu' (thank you).",
+    breakdownHi: "कृतज्ञता सूचक वाक्य। 'निम्म्म' (आपकी) + 'सहायक्के' (मदद के लिए, संप्रदान कारक '-क्के') + 'धन्यवादगळू' (धन्यवाद)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ನನಗೆ ಅರ್ಥವಾಗಲಿಲ್ಲ",
+    transliteration: "Nanage arthavaagalilla",
+    transliterationHi: "ननगे अर्थवागलिल्ला",
+    englishMeaning: "I did not understand",
+    hindiMeaning: "मुझे समझ नहीं आया।",
+    breakdown: "Extremely useful phrase for beginners. 'Nanage' (to me) + 'arthavaagalilla' (meaning did not occur).",
+    breakdownHi: "नए शिक्षार्थियों के लिए अत्यंत उपयोगी वाक्य। 'ननगे' (मुझे) + 'अर्थवागलिल्ला' (समझ नहीं आया)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ದಯವಿಟ್ಟು ಮತ್ತೊಮ್ಮೆ ಹೇಳಿ",
+    transliteration: "Dayavittu mattomme heeli",
+    transliterationHi: "दयविट्टू मत्तोम्मे हेली",
+    englishMeaning: "Please say it again",
+    hindiMeaning: "कृपया फिर से कहें।",
+    breakdown: "Polite request. 'Dayavittu' (please) + 'mattomme' (once more / again) + 'heeli' (say/tell, respectful imperative).",
+    breakdownHi: "अनुरोध वाक्य। 'दयविट्टू' (कृपया) + 'मत्तोम्मे' (एक बार फिर) + 'हेली' (कहें, आदरार्थक आज्ञार्थक रूप)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಬಹಳ ಸಂತೋಷ",
+    transliteration: "Bahala santoosha",
+    transliterationHi: "बहळ संतोष",
+    englishMeaning: "Very happy / My pleasure",
+    hindiMeaning: "बहुत खुशी हुई / बहुत प्रसन्नता हुई।",
+    breakdown: "Used to express deep satisfaction or a polite 'my pleasure'. 'Bahala' (very) + 'santoosha' (happiness).",
+    breakdownHi: "गहरी संतुष्टि या विनम्र प्रतिक्रिया व्यक्त करने के लिए। 'बहळ' (बहुत) + 'संतोष' (प्रसन्नता)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಚಿಂತೆ ಮಾಡಬೇಡಿ",
+    transliteration: "Chinte maadabeedi",
+    transliterationHi: "चिंते माडबेडी",
+    englishMeaning: "Do not worry",
+    hindiMeaning: "चिंता न करें।",
+    breakdown: "A reassuring phrase. 'Chinte' (worry/anxiety) + 'maadabeedi' (do not do, respectful negative imperative).",
+    breakdownHi: "सांत्वनादायक वाक्य। 'चिंते' (चिंता) + 'माडबेडी' (मत कीजिए, निषेधात्मक आदरार्थक क्रिया)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ನಿಮ್ಮ ಊರು ಯಾವುದು?",
+    transliteration: "Nimma ooru yaavudu?",
+    transliterationHi: "निम्म्म ऊरू यावुदू?",
+    englishMeaning: "Which is your hometown / native place?",
+    hindiMeaning: "आपका गृहनगर/गाँव कौन सा है?",
+    breakdown: "Friendly icebreaker in Karnataka. 'Nimma' (your) + 'ooru' (town/hometown) + 'yaavudu' (which one).",
+    breakdownHi: "कर्नाटक में परिचय बढ़ाने का लोकप्रिय वाक्य। 'निम्म्म' (आपका) + 'ऊरू' (गाँव/शहर) + 'यावुदू' (कौन सा)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ನಾಳೆ ಸಿಗೋಣ",
+    transliteration: "Naale sigoona",
+    transliterationHi: "नाळे सिगोणा",
+    englishMeaning: "Let's meet tomorrow",
+    hindiMeaning: "कल मिलते हैं।",
+    breakdown: "Friendly parting phrase. 'Naale' (tomorrow) + 'sigoona' (let us meet, cohortative form).",
+    breakdownHi: "अनौपचारिक विदा वाक्य। 'नाळे' (कल) + 'सिगोणा' (हम मिलेंगे/मिलते हैं)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಕನ್ನಡ ಕಲಿಯುವುದು ಸುಲಭ",
+    transliteration: "Kannada kaliyuvudu sulabha",
+    transliterationHi: "कन्नड़ कलियुवुदू सुलभ",
+    englishMeaning: "Learning Kannada is easy",
+    hindiMeaning: "ಕನ್ನಡ್ सीखना आसान है।",
+    breakdown: "Encouraging statement. 'Kaliyuvudu' (the act of learning, verbal noun) + 'sulabha' (easy).",
+    breakdownHi: "उत्साहवर्धन करने वाला वाक्य। 'कलियुवुदू' (सीखना, क्रियावाचक संज्ञा) + 'सुलभ' (सरल)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ನಾನು ಬೆಂಗಳೂರಿನಲ್ಲಿ ಇದ್ದೇನೆ",
+    transliteration: "Naanu bengaloorinalli iddeene",
+    transliterationHi: "नानू बेंगलूरिनल्ली इद्देने",
+    englishMeaning: "I am in Bengaluru",
+    hindiMeaning: "मैं बेंगलुरु में हूँ।",
+    breakdown: "A locative statement. 'Naanu' (I) + 'Bengaloorinalli' ('Bengalooru' + locative case suffix '-alli') + 'iddeene' (am, first-person singular).",
+    breakdownHi: "एक स्थानवाचक वाक्य। 'नानू' (मैं) + 'बेंगलूरिनल्ली' (बेंगलुरु + अधिकरण कारक '-अल्ली') + 'इद्देने' (हूँ)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಇಲ್ಲಿ ಬನ್ನಿ",
+    transliteration: "Illi banni",
+    transliterationHi: "इल्ली बन्नी",
+    englishMeaning: "Come here",
+    hindiMeaning: "यहाँ आइए।",
+    breakdown: "Polite invitation or directive. 'Illi' (here) + 'banni' (come, respectful plural imperative).",
+    breakdownHi: "विनम्रतापूर्वक बुलाने का वाक्य। 'इल्ली' (यहाँ) + 'बन्नी' (आइए, आदरार्थक आज्ञार्थक क्रिया)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಅಲ್ಲಿ ಹೋಗಿ",
+    transliteration: "Alli hoogi",
+    transliterationHi: "अल्ली होगी",
+    englishMeaning: "Go there",
+    hindiMeaning: "वहाँ जाइए।",
+    breakdown: "Polite direction. 'Alli' (there) + 'hoogi' (go, respectful plural/honorific imperative).",
+    breakdownHi: "विनम्र निर्देश। 'अल्ली' (वहाँ) + 'होगी' (जाइए, आदरार्थक आज्ञार्थक क्रिया)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಸಮಯ ಎಷ್ಟಾಗಿದೆ?",
+    transliteration: "Samaya eshtaagide?",
+    transliterationHi: "समय एश्टागिदे?",
+    englishMeaning: "What is the time?",
+    hindiMeaning: "समय कितना हुआ है?",
+    breakdown: "Asking the time. 'Samaya' (time) + 'eshtaagide' (how much has it become).",
+    breakdownHi: "समय पूछने के लिए वाक्य। 'समय' + 'एश्टागिदे' (कितना हो चुका है/हुआ है)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ನನಗೆ ಹಸಿವಾಗುತ್ತಿದೆ",
+    transliteration: "Nanage hasivaaguttide",
+    transliterationHi: "ननगे हसिवागुत्तिदे",
+    englishMeaning: "I am feeling hungry",
+    hindiMeaning: "मुझे भूख लग रही है।",
+    breakdown: "Expressing physiological state. 'Nanage' (to me) + 'hasivu' (hunger) + 'aaguttide' (is becoming).",
+    breakdownHi: "अपनी शारीरिक स्थिति व्यक्त करने के लिए वाक्य। 'ननगे' (मुझे) + 'हसिवु' (भूख) + 'आगुत्तिदे' (हो रही है)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಹವಾಮಾನ ಹೇಗಿದೆ?",
+    transliteration: "Havaamaana hegide?",
+    transliterationHi: "हवामान हेगिदे?",
+    englishMeaning: "How is the weather?",
+    hindiMeaning: "मौसम कैसा है?",
+    breakdown: "Standard conversational inquiry. 'Havaamaana' (weather/climate) + 'hegide' (how is it).",
+    breakdownHi: "मौसम के बारे में बात करने के लिए। 'हवामान' (मौसम) + 'हेगिदे' (कैसा है)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಇದು ನನ್ನ ಪುಸ್ತಕ",
+    transliteration: "Idu nanna pustaka",
+    transliterationHi: "इदु नन्ना पुस्तक",
+    englishMeaning: "This is my book",
+    hindiMeaning: "यह मेरी पुस्तक है।",
+    breakdown: "Possessive statement. 'Idu' (this) + 'nanna' (my) + 'pustaka' (book).",
+    breakdownHi: "स्वामित्व सूचक सरल वाक्य। 'इदु' (यह) + 'नन्ना' (मेरी) + 'पुस्तक' (किताब)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ಅವರು ತುಂಬಾ ಒಳ್ಳೆಯವರು",
+    transliteration: "Avaru tumba olleyavaru",
+    transliterationHi: "अवरू तुंब ओळ्ळेयवरू",
+    englishMeaning: "They are very good people",
+    hindiMeaning: "वे बहुत अच्छे व्यक्ति हैं।",
+    breakdown: "Appreciation of character. 'Avaru' (they/he-respectful) + 'tumba' (very) + 'olleyavaru' (good people).",
+    breakdownHi: "किसी के चरित्र की प्रशंसा। 'अवरू' (वे) + 'तुंब' (बहुत) + 'ओळ्ळेयवरू' (अच्छे लोग/व्यक्ति)।",
+    complexityTier: "Real-Life Phrase"
+  },
+  {
+    kannadaWord: "ನನಗೆ ಕನ್ನಡ ಮಾತನಾಡಲು ಇಷ್ಟ",
+    transliteration: "Nanage kannada maatanaadalu ishta",
+    transliterationHi: "ननगे कन्नड़ मातनाडलू इष्ट",
+    englishMeaning: "I like to speak Kannada",
+    hindiMeaning: "मुझे कन्नड़ बोलना पसंद है।",
+    breakdown: "Preference statement. 'Nanage' (to me) + 'Kannada' + 'maatanaadalu' (to speak, infinitive) + 'ishta' (desire/like).",
+    breakdownHi: "अपनी रुचि व्यक्त करने का वाक्य। 'ननगे' (मुझे) + 'कन्नड़' + 'मातनाडलू' (बोलना) + 'इष्ट' (पसंद/प्रिय)।",
+    complexityTier: "Real-Life Phrase"
   }
-  return result;
-}
-
-// 100 Base Nouns
-const NOUNS = [
-  { kn: "ಮರ", tr: "mara", en: "tree", hi: "पेड़", endsWith: "a" },
-  { kn: "ಮನೆ", tr: "mane", en: "house", hi: "घर", endsWith: "e" },
-  { kn: "ಗಿಡ", tr: "gida", en: "plant", hi: "पौधा", endsWith: "a" },
-  { kn: "ಹಾಲು", tr: "haalu", en: "milk", hi: "दूध", endsWith: "u" },
-  { kn: "ಬಾಗಿಲು", tr: "baagilu", en: "door", hi: "दरवाजा", endsWith: "u" },
-  { kn: "ಕಿಟಕಿ", tr: "kitaki", en: "window", hi: "खड़की", endsWith: "i" },
-  { kn: "ಹಣ್ಣು", tr: "hannu", en: "fruit", hi: "फल", endsWith: "u" },
-  { kn: "ನೀರು", tr: "neeru", en: "water", hi: "पानी", endsWith: "u" },
-  { kn: "ಹೂವು", tr: "hoovu", en: "flower", hi: "फूल", endsWith: "u" },
-  { kn: "ಪುಸ್ತಕ", tr: "pustaka", en: "book", hi: "पुस्तक", endsWith: "a" },
-  { kn: "ಶಾಲೆ", tr: "shaale", en: "school", hi: "स्कूल", endsWith: "e" },
-  { kn: "ಊಟ", tr: "oota", en: "meal", hi: "भोजन", endsWith: "a" },
-  { kn: "ಗೆಳೆಯ", tr: "geleya", en: "friend", hi: "मित्र", endsWith: "a" },
-  { kn: "ಸೂರ್ಯ", tr: "soorya", en: "sun", hi: "सूर्य", endsWith: "a" },
-  { kn: "ಚಂದ್ರ", tr: "chandra", en: "moon", hi: "चंद्रमा", endsWith: "a" },
-  { kn: "ನಕ್ಷತ್ರ", tr: "nakshatra", en: "star", hi: "तारा", endsWith: "a" },
-  { kn: "ಆಕಾಶ", tr: "aakaasha", en: "sky", hi: "आकाश", endsWith: "a" },
-  { kn: "ಕಾಡು", tr: "kaadu", en: "forest", hi: "जंगल", endsWith: "u" },
-  { kn: "ನದಿ", tr: "nadi", en: "river", hi: "नदी", endsWith: "i" },
-  { kn: "ಸಮುದ್ರ", tr: "samudra", en: "sea", hi: "समुद्र", endsWith: "a" },
-  { kn: "ಆನೆ", tr: "aane", en: "elephant", hi: "हाथी", endsWith: "e" },
-  { kn: "ಹುಲಿ", tr: "huli", en: "tiger", hi: "बाघ", endsWith: "i" },
-  { kn: "ಸಿಂಹ", tr: "simha", en: "lion", hi: "शेर", endsWith: "a" },
-  { kn: "ಹಕ್ಕಿ", tr: "hakki", en: "bird", hi: "पक्षी", endsWith: "i" },
-  { kn: "ನಾಯಿ", tr: "naayi", en: "dog", hi: "कुत्ता", endsWith: "i" },
-  { kn: "ಬೆಕ್ಕು", tr: "bekku", en: "cat", hi: "बिल्ली", endsWith: "u" },
-  { kn: "ಕುದುರೆ", tr: "kudure", en: "horse", hi: "घोड़ा", endsWith: "e" },
-  { kn: "ಹಸು", tr: "hasu", en: "cow", hi: "गाय", endsWith: "u" },
-  { kn: "ಮೀನು", tr: "meenu", en: "fish", hi: "मछली", endsWith: "u" },
-  { kn: "ಹಾವು", tr: "haavu", en: "snake", hi: "सांप", endsWith: "u" },
-  { kn: "ಕಣ್ಣು", tr: "kannu", en: "eye", hi: "आँख", endsWith: "u" },
-  { kn: "ಕೈ", tr: "kai", en: "hand", hi: "हाथ", endsWith: "i" },
-  { kn: "ಕಾಲು", tr: "kaalu", en: "leg", hi: "पैर", endsWith: "u" },
-  { kn: "ಕಿವಿ", tr: "kivi", en: "ear", hi: "कान", endsWith: "i" },
-  { kn: "ಮೂಗು", tr: "moogu", en: "nose", hi: "नाक", endsWith: "u" },
-  { kn: "ಹಲ್ಲು", tr: "hallu", en: "tooth", hi: "दांत", endsWith: "u" },
-  { kn: "ತಲೆ", tr: "tale", en: "head", hi: "सिर", endsWith: "e" },
-  { kn: "ಬೆರಳು", tr: "beralu", en: "finger", hi: "उंगली", endsWith: "u" },
-  { kn: "ಮನಸ್ಸು", tr: "manassu", en: "mind", hi: "मन", endsWith: "u" },
-  { kn: "ಭಾಷೆ", tr: "bhaashe", en: "language", hi: "भाषा", endsWith: "e" },
-  { kn: "ದೇಶ", tr: "desha", en: "country", hi: "देश", endsWith: "a" },
-  { kn: "ರಾಜ್ಯ", tr: "raajya", en: "state", hi: "राज्य", endsWith: "a" },
-  { kn: "ನಗರು", tr: "nagaru", en: "city", hi: "शहर", endsWith: "u" },
-  { kn: "ಹಳ್ಳಿ", tr: "halli", en: "village", hi: "गाँव", endsWith: "i" },
-  { kn: "ರಸ್ತೆ", tr: "raste", en: "road", hi: "सड़क", endsWith: "e" },
-  { kn: "ದಿನ", tr: "dina", en: "day", hi: "दिन", endsWith: "a" },
-  { kn: "ರಾತ್ರಿ", tr: "raatri", en: "night", hi: "रात", endsWith: "i" },
-  { kn: "ವರ್ಷ", tr: "varsha", en: "year", hi: "वर्ष", endsWith: "a" },
-  { kn: "ಸಮಯ", tr: "samaya", en: "time", hi: "समय", endsWith: "a" },
-  { kn: "ತಿಂಗಳು", tr: "tingalu", en: "month", hi: "महीना", endsWith: "u" },
-  { kn: "ಜನ", tr: "jana", en: "people", hi: "लोग", endsWith: "a" },
-  { kn: "ಅಕ್ಕ", tr: "akka", en: "elder sister", hi: "बड़ी बहन", endsWith: "a" },
-  { kn: "ಅಣ್ಣ", tr: "anna", en: "elder brother", hi: "बड़ा भाई", endsWith: "a" },
-  { kn: "ತಾಯಿ", tr: "taayi", en: "mother", hi: "माता", endsWith: "i" },
-  { kn: "ತಂದೆ", tr: "tande", en: "father", hi: "पिता", endsWith: "e" },
-  { kn: "ಮಗು", tr: "magu", en: "child", hi: "बच्चा", endsWith: "u" },
-  { kn: "ಕಲ್ಲು", tr: "kallu", en: "stone", hi: "पत्थर", endsWith: "u" },
-  { kn: "ಬೆಟ್ಟ", tr: "betta", en: "hill", hi: "पहाड़ी", endsWith: "a" },
-  { kn: "ಚಿನ್ನ", tr: "chinna", en: "gold", hi: "सोना", endsWith: "a" },
-  { kn: "ಬೆಳ್ಳಿ", tr: "belli", en: "silver", hi: "चांदी", endsWith: "i" },
-  { kn: "ಕುರಿ", tr: "kuri", en: "sheep", hi: "भेड़", endsWith: "i" },
-  { kn: "ಮೇಕೆ", tr: "meeke", en: "goat", hi: "बकरी", endsWith: "e" },
-  { kn: "ಕೋಳಿ", tr: "kooli", en: "chicken", hi: "मुर्गी", endsWith: "i" },
-  { kn: "ಆಮೆ", tr: "aame", en: "turtle", hi: "कछुआ", endsWith: "e" },
-  { kn: "ಮೊಲ", tr: "mola", en: "rabbit", hi: "खरगोश", endsWith: "a" },
-  { kn: "ಹಂದಿ", tr: "handi", en: "pig", hi: "सूअर", endsWith: "i" },
-  { kn: "ಎತ್ತು", tr: "ettu", en: "ox", hi: "बैल", endsWith: "u" },
-  { kn: "ಕರು", tr: "karu", en: "calf", hi: "बछड़ा", endsWith: "u" },
-  { kn: "ಇಲಿ", tr: "ili", en: "rat", hi: "चूहा", endsWith: "i" },
-  { kn: "ಕಾಗೆ", tr: "kaage", en: "crow", hi: "कौआ", endsWith: "e" },
-  { kn: "ಗಿಳಿ", tr: "gili", en: "parrot", hi: "तोता", endsWith: "i" },
-  { kn: "ನವಿಲು", tr: "navilu", en: "peacock", hi: "मोर", endsWith: "u" },
-  { kn: "ಮೀನು", tr: "meenu", en: "fish", hi: "मछली", endsWith: "u" },
-  { kn: "ಕೆರೆ", tr: "kere", en: "lake", hi: "झील", endsWith: "e" },
-  { kn: "ಬಟ್ಟೆ", tr: "batte", en: "cloth", hi: "कपड़ा", endsWith: "e" },
-  { kn: "ಊರು", tr: "ooru", en: "town", hi: "कस्बा", endsWith: "u" },
-  { kn: "ಪೆನ್ನು", tr: "pennu", en: "pen", hi: "कलम", endsWith: "u" },
-  { kn: "ದೋಣಿ", tr: "dooni", en: "boat", hi: "नाव", endsWith: "i" },
-  { kn: "ಆಟ", tr: "aata", en: "game/play", hi: "खेल", endsWith: "a" },
-  { kn: "ಹಾಡು", tr: "haadu", en: "song", hi: "गीत", endsWith: "u" },
-  { kn: "ಕನಸು", tr: "kanasu", en: "dream", hi: "सपना", endsWith: "u" },
-  { kn: "ಕೋಪ", tr: "koopa", en: "anger", hi: "गुस्सा", endsWith: "a" },
-  { kn: "ಬಯಲು", tr: "bayalu", en: "field", hi: "मैदान", endsWith: "u" },
-  { kn: "ಗಂಟೆ", tr: "gante", en: "bell/hour", hi: "घंटी/घंटा", endsWith: "e" },
-  { kn: "ಕುರ್ಚಿ", tr: "kurchi", en: "chair", hi: "कुर्सी", endsWith: "i" },
-  { kn: "ಮೇಜು", tr: "meeju", en: "table", hi: "मेज", endsWith: "u" },
-  { kn: "ದೇವಸ್ಥಾನ", tr: "devasthaana", en: "temple", hi: "मंदिर", endsWith: "a" },
-  { kn: "ವೈದ್ಯ", tr: "vaidya", en: "doctor", hi: "डॉक्टर", endsWith: "a" },
-  { kn: "ಸೈನಿಕ", tr: "sainika", en: "soldier", hi: "सैनिक", endsWith: "a" },
-  { kn: "ರೈತ", tr: "raita", en: "farmer", hi: "किसान", endsWith: "a" },
-  { kn: "ಹಬ್ಬ", tr: "habba", en: "festival", hi: "त्योहार", endsWith: "a" },
-  { kn: "ಮದುವೆ", tr: "maduve", en: "marriage", hi: "शादी", endsWith: "e" },
-  { kn: "ಕತ್ತಿ", tr: "katti", en: "sword", hi: "तलवार", endsWith: "i" },
-  { kn: "ಗಿಣ್ಣು", tr: "ginnu", en: "cheese", hi: "पनीर", endsWith: "u" },
-  { kn: "ದೂಳು", tr: "doolu", en: "dust", hi: "धूल", endsWith: "u" },
-  { kn: "ಮೋಡ", tr: "mooda", en: "cloud", hi: "बादल", endsWith: "a" },
-  { kn: "ಮಳೆ", tr: "male", en: "rain", hi: "बारिश", endsWith: "e" },
-  { kn: "ಚಿತ್ರ", tr: "chitra", en: "picture", hi: "चित्र", endsWith: "a" },
-  { kn: "ಕಥೆ", tr: "kathe", en: "story", hi: "कहानी", endsWith: "e" },
-  { kn: "ಬಿಸಿಲು", tr: "bisilu", en: "sunshine", hi: "धूप", endsWith: "u" }
 ];
 
-// 15 Adjectives
-const ADJECTIVES = [
-  { kn: "ಹೊಸ", tr: "hosa", en: "new", hi: "नया" },
-  { kn: "ಹಳೆಯ", tr: "haleya", en: "old", hi: "पुराना" },
-  { kn: "ದೊಡ್ಡ", tr: "dodda", en: "big", hi: "बड़ा" },
-  { kn: "ಚಿಕ್ಕ", tr: "chikka", en: "small", hi: "छोटा" },
-  { kn: "ಸುಂದರ", tr: "sundara", en: "beautiful", hi: "सुंदर" },
-  { kn: "ಒಳ್ಳೆಯ", tr: "olleya", en: "good", hi: "अच्छा" },
-  { kn: "ಕೆಟ್ಟ", tr: "ketta", en: "bad", hi: "बुरा" },
-  { kn: "ಬಿಸಿ", tr: "bisi", en: "hot", hi: "गर्म" },
-  { kn: "ತಣ್ಣನೆಯ", tr: "tannaneya", en: "cold", hi: "ठंडा" },
-  { kn: "ಸಿಹಿ", tr: "sihi", en: "sweet", hi: "मीठा" },
-  { kn: "ಕಹಿ", tr: "kahi", en: "bitter", hi: "कड़वा" },
-  { kn: "ಶುದ್ಧ", tr: "shuddha", en: "pure", hi: "शुद्ध" },
-  { kn: "ದಟ್ಟ", tr: "datta", en: "dense", hi: "घना" },
-  { kn: "ಕಪ್ಪು", tr: "kappu", en: "black", hi: "काला" },
-  { kn: "ಬಿಳಿ", tr: "bili", en: "white", hi: "सफेद" }
-];
-
-// 30 Common Verbs
-const VERBS = [
-  { kn: "ಮಾಡು", tr: "maadu", en: "do", hi: "करना", root: "ಮಾಡು" },
-  { kn: "ಹೋಗು", tr: "hogu", en: "go", hi: "जाना", root: "ಹೋಗು" },
-  { kn: "ಬರು", tr: "baru", en: "come", hi: "आना", root: "ಬರು" },
-  { kn: "ನೋಡು", tr: "noodu", en: "see", hi: "देखना", root: "ನೋಡು" },
-  { kn: "ಓದು", tr: "oodu", en: "read", hi: "पढ़ना", root: "ಓದು" },
-  { kn: "ಬರೆ", tr: "bare", en: "write", hi: "लिखना", root: "ಬರೆ" },
-  { kn: "ಹೇಳು", tr: "heelu", en: "tell", hi: "कहना", root: "ಹೇಳು" },
-  { kn: "ತಿನ್ನು", tr: "tinnu", en: "eat", hi: "खाना", root: "ತಿನ್ನು" },
-  { kn: "ಕುಡಿ", tr: "kudi", en: "drink", hi: "पीना", root: "ಕುಡಿ" },
-  { kn: "ಕೇಳು", tr: "keelu", en: "listen", hi: "सुनना", root: "ಕೇಳು" },
-  { kn: "ನಡೆ", tr: "nade", en: "walk", hi: "चलना", root: "ನಡೆ" },
-  { kn: "ಓಡು", tr: "oodu", en: "run", hi: "दौड़ना", root: "ಓಡು" },
-  { kn: "ನಗು", tr: "nagu", en: "laugh", hi: "हंसना", root: "ನಗು" },
-  { kn: "ಅಳು", tr: "alu", en: "cry", hi: "रोना", root: "ಅಳು" },
-  { kn: "ಕೊಡು", tr: "kodu", en: "give", hi: "देना", root: "ಕೊಡು" },
-  { kn: "ಕಲಿ", tr: "kali", en: "learn", hi: "सीखना", root: "ಕಲಿ" },
-  { kn: "ತಿಳಿ", tr: "tili", en: "understand", hi: "समझना", root: "ತಿಳಿ" },
-  { kn: "ಹಾಡು", tr: "haadu", en: "sing", hi: "गाना", root: "ಹಾಡು" },
-  { kn: "ಕುಣಿ", tr: "kuni", en: "dance", hi: "नाचना", root: "ಕುಣಿ" },
-  { kn: "ತೊಳಿ", tr: "toli", en: "wash", hi: "धोना", root: "ತೊಳಿ" },
-  { kn: "ಕಟ್ಟು", tr: "kattu", en: "build", hi: "बाँधना/बनाना", root: "ಕಟ್ಟು" },
-  { kn: "ಮುಟ್ಟು", tr: "muttu", en: "touch", hi: "छूना", root: "ಮುಟ್ಟು" },
-  { kn: "ನೆನೆ", tr: "nene", en: "remember", hi: "याद करना", root: "ನೆನೆ" },
-  { kn: "ನಂಬು", tr: "nambu", en: "believe", hi: "विश्वास करना", root: "ನಂಬು" },
-  { kn: "ಬೀಳು", tr: "beelu", en: "fall", hi: "गिरना", root: "ಬೀಳು" },
-  { kn: "ಗೆಲ್ಲು", tr: "gellu", en: "win", hi: "जीतना", root: "ಗೆಲ್ಲು" },
-  { kn: "ಸೋಲು", tr: "soolu", en: "lose", hi: "हारना", root: "ಸೋಲು" },
-  { kn: "ಅರಿ", tr: "ari", en: "know", hi: "जानना", root: "ಅರಿ" },
-  { kn: "ಕರೆ", tr: "kare", en: "call", hi: "बुलाना/कॉल करना", root: "ಕರೆ" },
-  { kn: "ಕೋರು", tr: "kooru", en: "request", hi: "अनुरोध करना", root: "ಕೋರು" }
-];
-
-// Apply case inflection suffix to a Kannada noun base
-function inflectNoun(noun: typeof NOUNS[0], caseIndex: number) {
-  const base = noun.kn;
-  const endsWith = noun.endsWith;
-  const baseTr = noun.tr;
-  
-  let kn = base;
-  let tr = baseTr;
-  let suffixEn = "";
-  let suffixHi = "";
-  let breakSuffix = "";
-
-  switch (caseIndex) {
-    case 0: // Nominative Singular
-      suffixEn = "";
-      suffixHi = " (एकवचन)";
-      breakSuffix = "nominative singular";
-      break;
-    case 1: // Nominative Plural (-ಗಳು)
-      kn = base + "ಗಳು";
-      tr = baseTr + "galu";
-      suffixEn = "s";
-      suffixHi = " (बहुवचन)";
-      breakSuffix = "plural marker '-ಗಳು' (-galu)";
-      break;
-    case 2: // Accusative Singular (-ವನ್ನು / -ಅನ್ನು)
-      if (endsWith === "a") {
-        kn = base + "ವನ್ನು";
-        tr = baseTr + "vannu";
-      } else if (endsWith === "e" || endsWith === "i") {
-        kn = base.substring(0, base.length - 1) + "ೆಯನ್ನು";
-        tr = baseTr.substring(0, baseTr.length - 1) + "eyannu";
-      } else { // "u"
-        kn = base.substring(0, base.length - 1) + "ನ್ನು";
-        tr = baseTr.substring(0, baseTr.length - 1) + "annu";
-      }
-      suffixEn = " [direct object]";
-      suffixHi = " को";
-      breakSuffix = "accusative case suffix indicating direct object focus";
-      break;
-    case 3: // Accusative Plural (-ಗಳನ್ನು)
-      kn = base + "ಗಳನ್ನು";
-      tr = baseTr + "galannu";
-      suffixEn = "s [direct object]";
-      suffixHi = "ों को";
-      breakSuffix = "plural accusative case suffix '-ಗಳನ್ನು' (-galannu)";
-      break;
-    case 4: // Dative Singular (-ಕ್ಕೆ / -ಗೆ)
-      if (endsWith === "a") {
-        kn = base + "ಕ್ಕೆ";
-        tr = baseTr + "kke";
-      } else if (endsWith === "e" || endsWith === "i") {
-        kn = base + "ಗೆ";
-        tr = baseTr + "ge";
-      } else { // "u"
-        kn = base.substring(0, base.length - 1) + "ಿಗೆ";
-        tr = baseTr.substring(0, baseTr.length - 1) + "ige";
-      }
-      suffixEn = " (to/for)";
-      suffixHi = " को/के लिए";
-      breakSuffix = "dative case suffix (indicating direction, goal, or recipient)";
-      break;
-    case 5: // Dative Plural (-ಗಳಿಗೆ)
-      kn = base + "ಗಳಿಗೆ";
-      tr = baseTr + "galige";
-      suffixEn = "s (to/for)";
-      suffixHi = "ों को/के लिए";
-      breakSuffix = "plural dative case suffix '-ಗಳಿಗೆ' (-galige)";
-      break;
-    case 6: // Locative Singular (-ದಲ್ಲಿ / -ನಲ್ಲಿ)
-      if (endsWith === "a") {
-        kn = base + "ದಲ್ಲಿ";
-        tr = baseTr + "dalli";
-      } else if (endsWith === "e" || endsWith === "i") {
-        kn = base.substring(0, base.length - 1) + "ೆಯಲ್ಲಿ";
-        tr = baseTr.substring(0, baseTr.length - 1) + "eyalli";
-      } else { // "u"
-        kn = base.substring(0, base.length - 1) + "ಿನಲ್ಲಿ";
-        tr = baseTr.substring(0, baseTr.length - 1) + "inalli";
-      }
-      suffixEn = " (in/on/at)";
-      suffixHi = " में/पर";
-      breakSuffix = "locative case suffix indicating spatial or physical location";
-      break;
-    case 7: // Locative Plural (-ಗಳಲ್ಲಿ)
-      kn = base + "ಗಳಲ್ಲಿ";
-      tr = baseTr + "galalli";
-      suffixEn = "s (in/on/at)";
-      suffixHi = "ों में/पर";
-      breakSuffix = "plural locative case suffix '-ಗಳಲ್ಲಿ' (-galalli)";
-      break;
-    case 8: // Instrumental / Ablative Singular (-ದಿಂದ)
-      if (endsWith === "a") {
-        kn = base + "ದಿಂದ";
-        tr = baseTr + "dinda";
-      } else if (endsWith === "e" || endsWith === "i") {
-        kn = base.substring(0, base.length - 1) + "ೆಯಿಂದ";
-        tr = baseTr.substring(0, baseTr.length - 1) + "eyinda";
-      } else { // "u"
-        kn = base.substring(0, base.length - 1) + "ಿನಿಂದ";
-        tr = baseTr.substring(0, baseTr.length - 1) + "ininda";
-      }
-      suffixEn = " (by/from/with)";
-      suffixHi = " से/के द्वारा";
-      breakSuffix = "instrumental/ablative case suffix indicating origin, cause, or instrument";
-      break;
-    case 9: // Instrumental / Ablative Plural (-ಗಳಿಂದ)
-      kn = base + "ಗಳಿಂದ";
-      tr = baseTr + "galinda";
-      suffixEn = "s (by/from/with)";
-      suffixHi = "ों से/के द्वारा";
-      breakSuffix = "plural instrumental/ablative case suffix '-ಗಳಿಂದ' (-galinda)";
-      break;
-  }
-
-  return { kn, tr, suffixEn, suffixHi, breakSuffix };
-}
-
-// Conjugate a Kannada verb
-function conjugateVerb(verb: typeof VERBS[0], conjugationIndex: number) {
-  const root = verb.kn;
-  const rootTr = verb.tr;
-  const en = verb.en;
-  const hi = verb.hi;
-
-  let kn = root;
-  let tr = rootTr;
-  let meaningEn = "";
-  let meaningHi = "";
-  let desc = "";
-
-  // Base stripping rules for standard conjugation
-  let stem = root;
-  let stemTr = rootTr;
-  if (root.endsWith("ು")) {
-    stem = root.substring(0, root.length - 1);
-    stemTr = rootTr.substring(0, rootTr.length - 1);
-  }
-
-  switch (conjugationIndex) {
-    case 0:
-      kn = stem + "ುತ್ತಾನೆ";
-      tr = stemTr + "uttaane";
-      meaningEn = `he ${en}s`;
-      meaningHi = `वह ${hi.replace("करना", "करता है").replace("जाना", "जाता है").replace("आना", "आता है").replace("देखना", "देखता है").replace("पढ़ना", "पढ़ता है").replace("लिखना", "लिखता है").replace("कहना", "कहता है").replace("खाना", "खाता है").replace("पीना", "पीता है").replace("सुनना", "सुनता है").replace("चलना", "चलता है").replace("दौड़ना", "दौड़ता है").replace("हंसना", "हंसता है").replace("रोना", "रोता है").replace("देना", "देता है").replace("सीखना", "सीखता है").replace("समझना", "समझता है").replace("गाना", "गाता है").replace("नाचना", "नाचता है")}`;
-      desc = "Present tense, 3rd person singular masculine";
-      break;
-    case 1:
-      kn = stem + "ುತ್ತಾಳೆ";
-      tr = stemTr + "uttaale";
-      meaningEn = `she ${en}s`;
-      meaningHi = `वह ${hi.replace("करना", "करती है").replace("जाना", "जाती है").replace("आना", "आती है").replace("देखना", "देखती है").replace("पढ़ना", "पढ़ती है").replace("लिखना", "लिखती है").replace("कहना", "कहती है").replace("खाना", "खाती है").replace("पीना", "पीती है").replace("सुनना", "सुनती है").replace("चलना", "चलती है").replace("दौड़ना", "दौड़ती है").replace("हंसना", "हंसती है").replace("रोना", "रोती है").replace("देना", "देती है").replace("सीखना", "सीखती है").replace("समझना", "समझती है").replace("गाना", "गाती है").replace("नाचना", "नाचती है")}`;
-      desc = "Present tense, 3rd person singular feminine";
-      break;
-    case 2:
-      kn = stem + "ುತ್ತಾರೆ";
-      tr = stemTr + "uttaare";
-      meaningEn = `they / you (polite) ${en}`;
-      meaningHi = `वे/आप ${hi.replace("करना", "करते हैं").replace("जाना", "जाते हैं").replace("आना", "आते हैं").replace("देखना", "देखते हैं").replace("पढ़ना", "पढ़ते हैं").replace("लिखना", "लिखते हैं").replace("कहना", "कहते हैं").replace("खाना", "खाते हैं").replace("पीना", "पीते हैं").replace("सुनना", "सुनते हैं").replace("चलना", "चलते हैं").replace("दौड़ना", "दौड़ते हैं")}`;
-      desc = "Present tense, 3rd person plural or honorific singular";
-      break;
-    case 3:
-      kn = stem + "ುತ್ತದೆ";
-      tr = stemTr + "uttade";
-      meaningEn = `it ${en}s`;
-      meaningHi = `यह/वह ${hi.replace("करना", "करता है").replace("जाना", "जाता है")}`;
-      desc = "Present tense, 3rd person singular neuter (animal/object)";
-      break;
-    case 4:
-      kn = stem + "ುತ್ತೇನೆ";
-      tr = stemTr + "utteene";
-      meaningEn = `I ${en}`;
-      meaningHi = `मैं ${hi.replace("करना", "करता हूँ")}`;
-      desc = "Present tense, 1st person singular";
-      break;
-    case 5:
-      kn = stem + "ುತ್ತೇವೆ";
-      tr = stemTr + "utteeve";
-      meaningEn = `we ${en}`;
-      meaningHi = `हम ${hi.replace("करना", "करते हैं")}`;
-      desc = "Present tense, 1st person plural";
-      break;
-    case 6:
-      kn = stem + "ಿದನು";
-      tr = stemTr + "idanu";
-      meaningEn = `he did ${en}`;
-      meaningHi = `उसने ${hi.replace("करना", "किया").replace("जाना", "गया").replace("आना", "आया")}`;
-      desc = "Past tense, 3rd person singular masculine";
-      break;
-    case 7:
-      kn = stem + "ಿದಳು";
-      tr = stemTr + "idalu";
-      meaningEn = `she did ${en}`;
-      meaningHi = `उसने ${hi.replace("करना", "किया").replace("जाना", "गयी").replace("आना", "आयी")}`;
-      desc = "Past tense, 3rd person singular feminine";
-      break;
-    case 8:
-      kn = stem + "ಿದರು";
-      tr = stemTr + "idaru";
-      meaningEn = `they/you did ${en}`;
-      meaningHi = `उन्होंने/आपने ${hi.replace("करना", "किया").replace("जाना", "गए")}`;
-      desc = "Past tense, 3rd person plural / honorific singular";
-      break;
-    case 9:
-      kn = stem + "ಿತು";
-      tr = stemTr + "itu";
-      meaningEn = `it did ${en}`;
-      meaningHi = `उसने/यह ${hi.replace("करना", "किया")}`;
-      desc = "Past tense, 3rd person singular neuter";
-      break;
-    case 10:
-      kn = stem + "ಿದೆನು";
-      tr = stemTr + "idenu";
-      meaningEn = `I did ${en}`;
-      meaningHi = `मैंने ${hi.replace("करना", "किया")}`;
-      desc = "Past tense, 1st person singular";
-      break;
-    case 11:
-      kn = stem + "ಿದೆವು";
-      tr = stemTr + "idevu";
-      meaningEn = `we did ${en}`;
-      meaningHi = `हमने ${hi.replace("करना", "किया")}`;
-      desc = "Past tense, 1st person plural";
-      break;
-    case 12:
-      kn = stem + "ುವನು";
-      tr = stemTr + "uvanu";
-      meaningEn = `he will ${en}`;
-      meaningHi = `वह ${hi.replace("करना", "करेगा")}`;
-      desc = "Future tense, 3rd person singular masculine";
-      break;
-    case 13:
-      kn = stem + "ುವಳು";
-      tr = stemTr + "uvalu";
-      meaningEn = `she will ${en}`;
-      meaningHi = `वह ${hi.replace("करना", "करेगी")}`;
-      desc = "Future tense, 3rd person singular feminine";
-      break;
-    case 14:
-      kn = stem + "ುವರು";
-      tr = stemTr + "uvaru";
-      meaningEn = `they will ${en}`;
-      meaningHi = `वे ${hi.replace("करना", "करेंगे")}`;
-      desc = "Future tense, 3rd person plural";
-      break;
-    case 15:
-      kn = stem + "ುವುದು";
-      tr = stemTr + "uvudu";
-      meaningEn = `it will ${en}`;
-      meaningHi = `वह ${hi.replace("करना", "करेगा (निर्जीव)")}`;
-      desc = "Future tense, 3rd person singular neuter";
-      break;
-    case 16:
-      kn = stem + "ುವೆನು";
-      tr = stemTr + "uvenu";
-      meaningEn = `I will ${en}`;
-      meaningHi = `मैं ${hi.replace("करना", "करूँगा")}`;
-      desc = "Future tense, 1st person singular";
-      break;
-    case 17:
-      kn = stem + "ುವೆವು";
-      tr = stemTr + "uvevu";
-      meaningEn = `we will ${en}`;
-      meaningHi = `हम ${hi.replace("करना", "करेंगे")}`;
-      desc = "Future tense, 1st person plural";
-      break;
-    case 18:
-      kn = stem + "ುತ್ತಿದ್ದಾನೆ";
-      tr = stemTr + "uttiddaane";
-      meaningEn = `he is ${en}ing`;
-      meaningHi = `वह ${hi.replace("करना", "कर रहा है")}`;
-      desc = "Continuous Present tense, 3rd person singular masculine";
-      break;
-    case 19:
-      kn = stem + "ುತ್ತಿದ್ದಾಳೆ";
-      tr = stemTr + "uttiddaale";
-      meaningEn = `she is ${en}ing`;
-      meaningHi = `वह ${hi.replace("करना", "कर रही है")}`;
-      desc = "Continuous Present tense, 3rd person singular feminine";
-      break;
-    case 20:
-      kn = stem + "ುತ್ತಿದ್ದಾರೆ";
-      tr = stemTr + "uttiddaare";
-      meaningEn = `they are ${en}ing`;
-      meaningHi = `वे ${hi.replace("करना", "कर रहे हैं")}`;
-      desc = "Continuous Present tense, 3rd person plural";
-      break;
-    case 21:
-      kn = stem + "ುತ್ತಿದೆ";
-      tr = stemTr + "uttide";
-      meaningEn = `it is ${en}ing`;
-      meaningHi = `यह ${hi.replace("करना", "कर रहा है")}`;
-      desc = "Continuous Present tense, 3rd person singular neuter";
-      break;
-    case 22:
-      kn = stem + "ುತ್ತಿದ್ದೇನೆ";
-      tr = stemTr + "uttiddeene";
-      meaningEn = `I am ${en}ing`;
-      meaningHi = `मैं ${hi.replace("करना", "कर रहा हूँ")}`;
-      desc = "Continuous Present tense, 1st person singular";
-      break;
-    case 23:
-      kn = stem + "ುತ್ತಿದ್ದೇವೆ";
-      tr = stemTr + "uttiddeeve";
-      meaningEn = `we are ${en}ing`;
-      meaningHi = `हम ${hi.replace("करना", "कर रहे हैं")}`;
-      desc = "Continuous Present tense, 1st person plural";
-      break;
-    case 24:
-      kn = stem + "ುವುದಿಲ್ಲ";
-      tr = stemTr + "uvudilla";
-      meaningEn = `does not / will not ${en}`;
-      meaningHi = `${hi.replace("करना", "नहीं करता/करेगा")}`;
-      desc = "Negative habitual/future verb form";
-      break;
-    case 25:
-      kn = root; // Singular imperative is usually the root
-      tr = rootTr;
-      meaningEn = `[you] ${en}!`;
-      meaningHi = `[तुम] ${hi}!`;
-      desc = "Imperative singular (command/request)";
-      break;
-    case 26:
-      kn = stem + "ಿರಿ";
-      tr = stemTr + "iri";
-      meaningEn = `[you all] ${en}!`;
-      meaningHi = `[आप/तुम सब] ${hi}!`;
-      desc = "Imperative plural or polite (command/request)";
-      break;
-    case 27:
-      kn = stem + "ಬಹುದು";
-      tr = stemTr + "bahudu";
-      meaningEn = `may / can ${en}`;
-      meaningHi = `${hi.replace("करना", "कर सकता है")}`;
-      desc = "Potential mood (indicating possibility or permission)";
-      break;
-    case 28:
-      kn = stem + "ಲು";
-      tr = stemTr + "lu";
-      meaningEn = `to ${en}`;
-      meaningHi = `${hi.replace("करना", "करने के लिए")}`;
-      desc = "Infinitive verb form";
-      break;
-    case 29:
-      kn = stem + "ುವುದು";
-      tr = stemTr + "uvudu";
-      meaningEn = `act of ${en}ing`;
-      meaningHi = `${hi.replace("करना", "करना/करने की क्रिया")}`;
-      desc = "Gerund / Verbal Noun";
-      break;
-  }
-
-  return { kn, tr, meaningEn, meaningHi, desc };
-}
-
-// Main access function to retrieve any word from 0 to 9999
 export function getWordAt(index: number, refLang: 'en' | 'hi'): WordItem {
-  // Guard the index range
-  const safeIndex = Math.max(0, Math.min(TOTAL_FORGE_WORDS - 1, index));
-  const level = Math.floor(safeIndex / 100) + 1; // 1 to 100 progressive levels
-
-  // Split indices into Nouns, Compounds, and Verbs
-  if (safeIndex < 1000) {
-    // 0 to 999: Nouns Inflected (Interleaved to reduce consecutive redundancy)
-    const caseIndex = Math.floor(safeIndex / 100); // 0 to 9 cases
-    const nounIndex = safeIndex % 100; // 0 to 99 nouns
-    const noun = NOUNS[nounIndex];
-    const inflected = inflectNoun(noun, caseIndex);
-
-    const isEng = refLang === "en";
-    const complexityTier = caseIndex === 0 
-      ? "Level 1: Basic Nouns" 
-      : caseIndex <= 3 
-        ? "Level 2: Common Plurals & Direct Objects" 
-        : "Level 3: Inflected Spatial & Dative Nouns";
-
-    return {
-      kannadaWord: inflected.kn,
-      transliteration: refLang === 'hi' ? transliterateToHindi(inflected.kn) : inflected.tr,
-      englishMeaning: noun.en + inflected.suffixEn,
-      hindiMeaning: noun.hi + inflected.suffixHi,
-      breakdown: isEng
-        ? `Syllabic root: '${noun.kn}' (transliterated: '${noun.tr}', meaning: '${noun.en}') + ${inflected.breakSuffix}.`
-        : `धातु रूप: '${noun.kn}' (लिप्यंतरण: '${noun.tr}', अर्थ: '${noun.hi}') + ${inflected.breakSuffix.replace("plural marker", "बहुवचन प्रत्यय").replace("accusative case", "कर्म कारक").replace("dative case", "संप्रदान कारक").replace("locative case", "अधिकरण कारक").replace("instrumental/ablative case", "करण/अपादान कारक")}.`,
-      complexityTier,
-      level
-    };
-
-  } else if (safeIndex < 9100) {
-    // 1000 to 9099: Adjective-Noun Compounds Inflected (8100 combinations, Interleaved to reduce consecutive redundancy)
-    const compoundIndex = safeIndex - 1000; // 0 to 8099
-    const caseIndex = Math.floor(compoundIndex / 810); // 0 to 9 cases
-    const comboIndex = compoundIndex % 810; // 0 to 809 combinations
-
-    const adjectiveIndex = Math.floor(comboIndex / 54) % ADJECTIVES.length; // 0 to 14
-    const nounIndex = comboIndex % 54; // 0 to 53 (subset of nouns for natural sounding combos)
-    
-    const adj = ADJECTIVES[adjectiveIndex];
-    const noun = NOUNS[nounIndex];
-    
-    // Create combined noun
-    let combinedNounKn = adj.kn + noun.kn;
-    let combinedNounTr = adj.tr + noun.tr;
-    
-    // Stripping extra characters for clean Sandhi (compound) visual alignment
-    if (adj.kn === "ಬಿಸಿ" && noun.kn === "ನೀರು") {
-      combinedNounKn = "ಬಿಸಿನೀರು";
-      combinedNounTr = "bisineeru";
-    } else if (adj.kn === "ತಣ್ಣನೆಯ" && noun.kn === "ನೀರು") {
-      combinedNounKn = "ತಣ್ಣೀರು";
-      combinedNounTr = "tanneeru";
-    }
-
-    const dummyNoun = { kn: combinedNounKn, tr: combinedNounTr, en: `${adj.en} ${noun.en}`, hi: `${adj.hi} ${noun.hi}`, endsWith: noun.endsWith };
-    const inflected = inflectNoun(dummyNoun, caseIndex);
-
-    const isEng = refLang === "en";
-    const complexityTier = caseIndex === 0 
-      ? "Level 4: Adjective-Noun Compounds" 
-      : "Level 5: Inflected Adjective-Noun Compounds";
-
-    return {
-      kannadaWord: inflected.kn,
-      transliteration: refLang === 'hi' ? transliterateToHindi(inflected.kn) : inflected.tr,
-      englishMeaning: `${adj.en} ${noun.en}${inflected.suffixEn}`,
-      hindiMeaning: `${adj.hi} ${noun.hi}${inflected.suffixHi}`,
-      breakdown: isEng
-        ? `Compound Word (Samasa): formed by combining the descriptive adjective '${adj.kn}' (${adj.en}) with the noun '${noun.kn}' (${noun.en}). Fully inflected with the ${inflected.breakSuffix}.`
-        : `कर्मधारय समास: विशेषण '${adj.kn}' (${adj.hi}) और संज्ञा '${noun.kn}' (${noun.hi}) के संयोजन से निर्मित। इस संयुक्त पद को ${inflected.breakSuffix.replace("plural marker", "बहुवचन प्रत्यय").replace("accusative case", "कर्म कारक").replace("dative case", "संप्रदान कारक").replace("locative case", "अधिकरण कारक").replace("instrumental/ablative case", "करण/अपादान कारक")} के साथ जोड़ा गया है।`,
-      complexityTier,
-      level
-    };
-
-  } else {
-    // 9100 to 9999: Verbs Conjugated (900 combinations, Interleaved to reduce consecutive redundancy)
-    const verbIndex = safeIndex - 9100; // 0 to 899
-    const conjugationIndex = Math.floor(verbIndex / 30); // 0 to 29 conjugations
-    const verbBaseIndex = verbIndex % 30; // 0 to 29 verbs
-
-    const verb = VERBS[verbBaseIndex];
-    const conjugated = conjugateVerb(verb, conjugationIndex);
-
-    const isEng = refLang === "en";
-    const complexityTier = conjugationIndex < 6 
-      ? "Level 6: Present Tense Verbs" 
-      : conjugationIndex < 12 
-        ? "Level 7: Past Tense Verbs" 
-        : conjugationIndex < 18 
-          ? "Level 8: Future Tense Verbs" 
-          : conjugationIndex < 24 
-            ? "Level 9: Continuous Aspect Verbs" 
-            : "Level 10: Advanced Potentials, Negatives, & Imperatives";
-
-    return {
-      kannadaWord: conjugated.kn,
-      transliteration: refLang === 'hi' ? transliterateToHindi(conjugated.kn) : conjugated.tr,
-      englishMeaning: conjugated.meaningEn,
-      hindiMeaning: conjugated.meaningHi,
-      breakdown: isEng
-        ? `Verbal conjugation: constructed on the verb root '${verb.kn}' (transliterated: '${verb.tr}', meaning: '${verb.en}'). Inflected with ${conjugated.desc}.`
-        : `क्रिया रूप: धातु रूप '${verb.kn}' (लिप्यंतरण: '${verb.tr}', अर्थ: '${verb.hi}') पर आधारित। इसे व्याकरण के अनुसार '${conjugated.desc.replace("Present tense", "वर्तमान काल").replace("Past tense", "भूतकाल").replace("Future tense", "भविष्य काल").replace("3rd person", "अन्य पुरुष").replace("1st person", "उत्तम पुरुष").replace("masculine", "पुल्लिंग").replace("feminine", "स्त्रीलिंग").replace("neuter", "नपुंसकलिंग").replace("plural", "बहुवचन").replace("singular", "एकवचन").replace("Continuous", "अपूर्ण/सतत").replace("honorific", "आदरसूचक")}' में रूपांतरित किया गया है।`,
-      complexityTier,
-      level
-    };
-  }
+  const safeIndex = Math.max(0, Math.min(REALISTIC_WORDS_AND_PHRASES.length - 1, index));
+  return REALISTIC_WORDS_AND_PHRASES[safeIndex];
 }

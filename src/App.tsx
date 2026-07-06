@@ -8,21 +8,18 @@ import { AlphabetCharacter } from './types';
 import { AlphabetGrid } from './components/AlphabetGrid';
 import { PatternMatcher } from './components/PatternMatcher';
 import { KagunithaSyllableGrid } from './components/KagunithaSyllableGrid';
-import { QuizSection } from './components/QuizSection';
 import { WordGenerator } from './components/WordGenerator';
 import { SpeedRecall } from './components/SpeedRecall';
-import { LookAlikes } from './components/LookAlikes';
 import { OttaksharaLearner } from './components/OttaksharaLearner';
 import { EssayPractice } from './components/EssayPractice';
-import { PrintableReferenceBooklet } from './components/PrintableReferenceBooklet';
 import { KANNADA_ALPHABETS } from './data/alphabets';
-import { BookOpen, HelpCircle, Layers, SpellCheck, Trophy, Sparkles, CheckCircle2, Languages, Flame, Volume2, Type, Sliders, Eye, PenTool, Printer } from 'lucide-react';
+import { BookOpen, HelpCircle, Layers, SpellCheck, Trophy, Sparkles, CheckCircle2, Languages, Flame, Volume2, Type, Sliders, Eye, PenTool } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from './contexts/LanguageContext';
 
 export default function App() {
   const { referenceLanguage, setReferenceLanguage, t, getTranslatedChar, translateSubCategory } = useLanguage();
-  const [activeView, setActiveView] = useState<'catalog' | 'patterns' | 'syllables' | 'lookalikes' | 'ottakshara' | 'recall' | 'words' | 'quiz' | 'essay' | 'booklet'>('catalog');
+  const [activeView, setActiveView] = useState<'catalog' | 'patterns' | 'syllables' | 'ottakshara' | 'recall' | 'words' | 'essay'>('catalog');
   const [isStandalonePoster, setIsStandalonePoster] = useState(false);
   const [selectedChar, setSelectedChar] = useState<AlphabetCharacter | null>(null);
 
@@ -214,8 +211,8 @@ export default function App() {
   return (
     <div id="application-container" className="min-h-screen bg-[#FDFBF7] text-[#2D2926] font-sans antialiased selection:bg-[#7B241C]/10 selection:text-[#7B241C]">
       {/* Visual elegant paper grain texture effects, very subtle */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#7B241C]/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-[#F4A261]/5 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#7B241C]/5 blur-[120px] rounded-full pointer-events-none print:hidden" />
+      <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-[#F4A261]/5 blur-[100px] rounded-full pointer-events-none print:hidden" />
 
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
@@ -492,12 +489,9 @@ export default function App() {
             { id: 'catalog', label: referenceLanguage === 'hi' ? 'वर्णमाला' : 'Catalog', icon: BookOpen },
             { id: 'patterns', label: referenceLanguage === 'hi' ? 'स्वर-पैटर्न' : 'Patterns', icon: Layers },
             { id: 'syllables', label: referenceLanguage === 'hi' ? 'बाराखड़ी' : 'Syllables', icon: SpellCheck },
-            { id: 'lookalikes', label: referenceLanguage === 'hi' ? 'समान वर्ण' : 'Look-Alikes', icon: Eye },
             { id: 'ottakshara', label: referenceLanguage === 'hi' ? 'ओत्तक्षर' : 'Ottakshara', icon: Type },
             { id: 'recall', label: referenceLanguage === 'hi' ? 'शीघ्र स्मरण' : 'Speed Recall', icon: Flame },
             { id: 'words', label: referenceLanguage === 'hi' ? 'शब्द निर्माण' : 'Forge', icon: Languages },
-            { id: 'booklet', label: referenceLanguage === 'hi' ? 'प्रिंट बुकलेट' : 'Printable Booklet', icon: Printer },
-            { id: 'quiz', label: referenceLanguage === 'hi' ? 'परीक्षण' : 'Quiz', icon: HelpCircle },
             { id: 'essay', label: referenceLanguage === 'hi' ? 'निबंध अभ्यास' : 'Essay Practice', icon: PenTool },
           ].map((tab) => {
             const Icon = tab.icon;
@@ -576,21 +570,7 @@ export default function App() {
               </motion.div>
             )}
 
-            {activeView === 'lookalikes' && (
-              <motion.div
-                key="lookalikes"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="space-y-2 mb-6 text-center">
-                  <h3 className="text-2xl font-serif text-[#2D2926]">Visually Look-Alike Clusters</h3>
-                  <span className="text-[10px] font-mono tracking-[0.3em] uppercase opacity-60">Master the subtle strokes of identical twins & distortion patterns</span>
-                </div>
-                <LookAlikes fontSize={fontSize} />
-              </motion.div>
-            )}
+            {/* Look-Alikes section removed per user request */}
 
             {activeView === 'ottakshara' && (
               <motion.div
@@ -644,34 +624,7 @@ export default function App() {
               </motion.div>
             )}
 
-            {activeView === 'booklet' && (
-              <motion.div
-                key="booklet"
-                id="booklet-view-wrapper"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.2 }}
-              >
-                <PrintableReferenceBooklet />
-              </motion.div>
-            )}
-
-            {activeView === 'quiz' && (
-              <motion.div
-                key="quiz"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="space-y-2 mb-6 text-center">
-                  <h3 className="text-2xl font-serif text-[#2D2926]">Linguistic Drill</h3>
-                  <span className="text-[10px] font-mono tracking-[0.3em] uppercase opacity-60">Practice & Match Transliterations</span>
-                </div>
-                <QuizSection />
-              </motion.div>
-            )}
+            {/* Linguistic Drill Quiz section removed per user request */}
 
             {activeView === 'essay' && (
               <motion.div
